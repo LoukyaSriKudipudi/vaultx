@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VaultX 🔐 - FAQ</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #000;
+        color: #fff;
+      }
+
+      header {
+        background: #111;
+        padding: 20px 30px;
+        text-align: center;
+        border-bottom: 1px solid #222;
+      }
+
+      header h1 {
+        color: #ffcc00;
+        margin: 0;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      .faq {
+        margin-bottom: 25px;
+        padding: 20px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .faq h3 {
+        margin: 0 0 10px;
+        color: #ffcc00;
+      }
+
+      .faq p {
+        margin: 0;
+        color: #ccc;
+        line-height: 1.6;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        border-top: 1px solid #222;
+        margin-top: 50px;
+        font-size: 14px;
+        color: #777;
+      }
+
+      footer a {
+        color: #ffcc00;
+        text-decoration: none;
+        margin: 0 8px;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Frequently Asked Questions</h1>
+    </header>
+
+    <div class="container">
+      <div class="faq">
+        <h3>🔒 How is my data encrypted?</h3>
+        <p>
+          We use <strong>AES-128 GCM encryption</strong> with a unique key and
+          IV (Initialization Vector) for each entry. This ensures that even if
+          the database is compromised, your sensitive data remains secure.
+        </p>
+      </div>
+
+      <div class="faq">
+        <h3>👤 Who can access my data?</h3>
+        <p>
+          Only you can access your data after logging in. Even our servers store
+          only encrypted information. We cannot read your secrets.
+        </p>
+      </div>
+
+      <div class="faq">
+        <h3>🔑 What if I forget my password?</h3>
+        <p>
+          You can reset your password securely using your registered email
+          address. For your protection, we cannot recover your original
+          password.
+        </p>
+      </div>
+
+      <div class="faq">
+        <h3>📊 Are my links tracked?</h3>
+        <p>
+          Only anonymous analytics such as click counts and time of access are
+          collected. We never sell or share personal data with third parties.
+        </p>
+      </div>
+
+      <div class="faq">
+        <h3>🛡️ Are shared links safe?</h3>
+        <p>
+          Yes, each shared link is protected with optional passwords and expires
+          after a set time (if configured). This prevents unauthorized access.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        &copy; 2025 VaultX 🔐 |
+        <a href="terms.html">Terms</a> | <a href="privacy.html">Privacy</a> |
+        <a href="contact.html">Contact</a>
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VaultX 🔐 - Dashboard</title>
+    <style>
+      /* Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: #fff;
+        background: #000;
+        line-height: 1.6;
+        overflow-x: hidden;
+        display: flex;
+        min-height: 100vh;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 220px;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(6px);
+        padding: 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .sidebar h2 {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #ffcc00;
+      }
+
+      .sidebar a {
+        color: #ffcc00;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
+
+      .sidebar a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+      }
+
+      /* Main */
+      .main {
+        margin-left: 220px;
+        padding: 30px;
+        flex: 1;
+      }
+
+      .main h1 {
+        font-size: 32px;
+        margin-bottom: 25px;
+        color: #ffcc00;
+      }
+
+      /* Vault Section */
+      .vault {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 25px;
+        border-radius: 10px;
+        backdrop-filter: blur(6px);
+      }
+
+      .vault h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #ffcc00;
+      }
+
+      #searchContainer {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      #searchContainer input {
+        flex: 1;
+        padding: 10px 14px;
+        border: none;
+        border-radius: 6px;
+        outline: none;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+      }
+
+      #searchContainer input::placeholder {
+        color: #bbb;
+      }
+
+      .add-secret {
+        background: #ffcc00;
+        color: #000;
+        padding: 10px 16px;
+        font-weight: bold;
+        border-radius: 6px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.3s ease;
+        border: none;
+      }
+
+      .add-secret:hover {
+        background: #ffd633;
+        transform: translateY(-2px);
+      }
+
+      /* Table */
+      .table-container {
+        overflow-x: auto;
+        border-radius: 8px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      thead {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      th,
+      td {
+        padding: 12px 15px;
+        text-align: left;
+        color: #ddd;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      th:first-child,
+      td:first-child {
+        text-align: center;
+        width: 50px;
+      }
+
+      th.sNo,
+      td.sNo {
+        width: 25px;
+        /* text-align: center; */
+      }
+      tr:hover {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      /* Footer */
+      footer {
+        margin-top: 30px;
+        text-align: center;
+        font-size: 14px;
+        color: #bbb;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 15px;
+        border-radius: 8px;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        body {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          position: relative;
+          width: 100%;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* .sidebar {
+        width: 220px;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(6px);
+        padding: 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      } */
+
+        .sidebar h2 {
+          font-size: 18px;
+          font-weight: bold;
+          /* margin-bottom: 10px; */
+          color: #ffcc00;
+          align-self: center;
+        }
+
+        .sidebar a {
+          color: #ffcc00;
+          text-decoration: none;
+          font-weight: bold;
+          padding: 8px 12px;
+          border-radius: 6px;
+          transition: background 0.3s ease, color 0.3s ease;
+        }
+        .main {
+          margin-left: 0;
+          padding: 20px;
+        }
+
+        #searchContainer {
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+
+      .viewBtn {
+        cursor: pointer;
+      }
+
+      input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        background: transparent;
+        border: 2px solid #ffcc00;
+        width: 18px;
+        height: 18px;
+        border-radius: 4px;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.2s ease;
+      }
+
+      /* Hover effect */
+      input[type="checkbox"]:hover {
+        border-color: #ffd633;
+        box-shadow: 0 0 6px #ffcc00;
+      }
+
+      /* Checked state */
+      input[type="checkbox"]:checked {
+        background: #ffcc00;
+        border-color: #ffcc00;
+      }
+
+      /* Tick mark */
+      input[type="checkbox"]:checked::after {
+        content: "✔";
+        font-size: 12px;
+        color: #000;
+        position: absolute;
+        top: 0;
+        left: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>VaultX 🔐</h2>
+      <a href="/settings.html">Settings</a>
+      <a href="login.html" id="logout">Logout</a>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div class="main">
+      <h1 id="welcomeMessage">Welcome back, User 👋</h1>
+
+      <!-- Vault Items -->
+      <div class="vault">
+        <h2>Your Secrets</h2>
+        <div id="searchContainer">
+          <a href="/secret.html" class="add-secret">+ Add New Secret</a>
+          <input id="search" type="text" placeholder="Search" />
+          <button
+            id="deleteSelected"
+            class="add-secret"
+            style="background: #e74c3c; color: #fff"
+          >
+            Delete Selected
+          </button>
+        </div>
+
+        <div class="table-container">
+          <table id="table">
+            <thead>
+              <tr>
+                <th><input type="checkbox" id="checkbox" /></th>
+                <th class="sNo">S. No</th>
+                <th>Title</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <!-- Secrets will be injected here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <footer>&copy; 2025 VaultX. All rights reserved.</footer>
+    </div>
+
+    <script src="/js/dashboard.js"></script>
+  </body>
+</html>

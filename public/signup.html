@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VaultX 🔐 - Sign Up</title>
+    <!-- <link rel="stylesheet" href="index.css" /> -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        color: #fff;
+        background: #000;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        object-fit: cover;
+        z-index: -1;
+        filter: brightness(0.1);
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(6px);
+        z-index: 10;
+      }
+
+      header h2 {
+        font-size: 22px;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      header a {
+        color: #ffcc00;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      header a:hover {
+        color: #fff;
+      }
+
+      .signup-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .signup-box {
+        background: rgba(0, 0, 0, 0.75);
+        padding: 40px 30px;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 420px;
+        text-align: center;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+      }
+
+      .signup-box h2 {
+        margin-bottom: 25px;
+        font-size: 26px;
+        color: #ffcc00;
+      }
+
+      .signup-box input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 6px;
+        border: none;
+        outline: none;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font-size: 16px;
+      }
+
+      .signup-box input::placeholder {
+        color: #bbb;
+      }
+
+      .signup-box button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        border: none;
+        border-radius: 6px;
+        background: #ffcc00;
+        color: #000;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.3s ease;
+      }
+
+      .signup-box button:hover {
+        background: #ffd633;
+        transform: translateY(-2px);
+      }
+
+      .signup-box p {
+        margin-top: 15px;
+        font-size: 14px;
+        color: #ddd;
+      }
+
+      .signup-box a {
+        color: #ffcc00;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .signup-box a:hover {
+        text-decoration: underline;
+      }
+
+      .terms {
+        margin-top: 10px;
+        font-size: 13px;
+        color: #aaa;
+      }
+
+      .terms a {
+        color: #ffcc00;
+        text-decoration: none;
+      }
+
+      .terms a:hover {
+        text-decoration: underline;
+      }
+
+      #message {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h2>VaultX 🔐</h2>
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+    </header>
+
+    <video autoplay loop muted>
+      <source src="/videos/valutx.mp4" />
+    </video>
+
+    <div class="signup-container">
+      <div class="signup-box">
+        <h2>Create Your VaultX Account</h2>
+        <form id="signupForm">
+          <input type="text" name="username" placeholder="Full Name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+            minlength="8"
+          />
+          <input
+            type="password"
+            name="passwordConfirm"
+            placeholder="Confirm Password"
+            minlength="8"
+            required
+          />
+          <p id="message"></p>
+          <button type="submit">Sign Up</button>
+        </form>
+        <div class="terms">
+          By signing up, you agree to our
+          <a href="terms.html">Terms of Service</a> and
+          <a href="privacy.html">Privacy Policy</a>.
+        </div>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+      </div>
+    </div>
+    <script src="/js/signup.js"></script>
+  </body>
+</html>
